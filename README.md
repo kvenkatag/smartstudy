@@ -1,3 +1,4 @@
+
 # SmartStudyApp
 
 This Spring Boot app serves a lightweight static front-end for school-board practice tests, technical modules, and MPC-EAMCET mock assessments.
@@ -41,3 +42,6 @@ Then open:
 ## Public URL after deployment
 Render provides a shareable public URL after the service is live. You can send that link to students for free on the Render free tier.
 
+
+# smartstudy
+Smart study using AI- practice
