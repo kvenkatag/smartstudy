@@ -1,0 +1,23 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-09-14T13:53:50.579-04:00  INFO 24145 --- [           main] org.example.Main                         : Starting Main v1.0-SNAPSHOT using Java 21.0.12.1 with PID 24145 (/Users/venkatagangadhar/IdeaProjects/Test-App/target/SmartStudyApp-1.0-SNAPSHOT.jar started by venkatagangadhar in /Users/venkatagangadhar/IdeaProjects/Test-App)
+2026-09-14T13:53:50.581-04:00  INFO 24145 --- [           main] org.example.Main                         : No active profile set, falling back to 1 default profile: "default"
+2026-09-14T13:53:50.856-04:00  INFO 24145 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-09-14T13:53:50.860-04:00  INFO 24145 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-14T13:53:50.861-04:00  INFO 24145 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2026-09-14T13:53:50.870-04:00  INFO 24145 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-09-14T13:53:50.870-04:00  INFO 24145 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 267 ms
+2026-09-14T13:53:50.904-04:00  INFO 24145 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-09-14T13:53:50.975-04:00  INFO 24145 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-09-14T13:53:50.981-04:00  INFO 24145 --- [           main] org.example.Main                         : Started Main in 0.533 seconds (process running for 0.692)
+2026-09-14T13:53:52.327-04:00  INFO 24145 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-14T13:53:52.327-04:00  INFO 24145 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-14T13:53:52.328-04:00  INFO 24145 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

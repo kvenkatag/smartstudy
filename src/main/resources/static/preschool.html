@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartStudyApp | Pre-School</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="preschool">
+    <div class="preschool-bubbles" aria-hidden="true">
+        <span class="bubble bubble-1"></span>
+        <span class="bubble bubble-2"></span>
+        <span class="bubble bubble-3"></span>
+        <span class="bubble bubble-4"></span>
+        <span class="bubble bubble-5"></span>
+    </div>
+
+    <div class="app-shell preschool-shell">
+        <header class="topbar preschool-topbar">
+            <div>
+                <p class="eyebrow">Ages 0-4</p>
+                <h1><a href="index.html" class="home-link">Little Learners</a></h1>
+            </div>
+            <div class="topbar-actions">
+                <a href="index.html" class="link-button secondary">School Dashboard</a>
+                <a href="technical.html" class="link-button secondary">Java Practice</a>
+                <button id="music-toggle" class="primary" type="button">Music: Off</button>
+            </div>
+        </header>
+
+        <section class="preschool-hero">
+            <div>
+                <p class="eyebrow">Safe play and tiny steps</p>
+                <h2>Play, sing, and learn together</h2>
+            </div>
+            <p>Simple activities for babies and preschoolers with bright colors, gentle sounds, and easy learning moments.</p>
+        </section>
+
+        <div class="preschool-grid">
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Coloring</span>
+                    <h3>Coloring page</h3>
+                </div>
+                <div class="coloring-board">
+                    <div class="coloring-shape shape-circle" data-color="" aria-label="Circle shape"></div>
+                    <div class="coloring-shape shape-square" data-color="" aria-label="Square shape"></div>
+                    <div class="coloring-shape shape-star" data-color="" aria-label="Star shape"></div>
+                    <div class="coloring-shape shape-oval" data-color="" aria-label="Oval shape"></div>
+                </div>
+                <div class="color-palette" aria-label="Color palette">
+                    <button class="color-swatch active" data-color="#f9a8d4" style="background:#f9a8d4" type="button" aria-label="Pink"></button>
+                    <button class="color-swatch" data-color="#93c5fd" style="background:#93c5fd" type="button" aria-label="Blue"></button>
+                    <button class="color-swatch" data-color="#86efac" style="background:#86efac" type="button" aria-label="Green"></button>
+                    <button class="color-swatch" data-color="#fcd34d" style="background:#fcd34d" type="button" aria-label="Yellow"></button>
+                    <button class="color-swatch" data-color="#c4b5fd" style="background:#c4b5fd" type="button" aria-label="Purple"></button>
+                </div>
+                <button type="button" class="secondary reset-button">Reset colors</button>
+            </article>
+
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Memory</span>
+                    <h3>Matching game</h3>
+                </div>
+                <div id="memory-game" class="memory-grid" aria-live="polite"></div>
+            </article>
+
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Numbers</span>
+                    <h3>Number learning</h3>
+                </div>
+                <div class="number-learning">
+                    <div class="number-item"><span>1</span><small>⭐</small></div>
+                    <div class="number-item"><span>2</span><small>🌟🌟</small></div>
+                    <div class="number-item"><span>3</span><small>🍎🍎🍎</small></div>
+                    <div class="number-item"><span>4</span><small>🧸🧸🧸🧸</small></div>
+                    <div class="number-item"><span>5</span><small>🐚🐚🐚🐚🐚</small></div>
+                    <div class="number-item"><span>6</span><small>🌼🌼🌼🌼🌼🌼</small></div>
+                </div>
+            </article>
+
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Sounds</span>
+                    <h3>Animal sound cards</h3>
+                </div>
+                <div class="animal-cards" id="animal-cards"></div>
+            </article>
+
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Challenge</span>
+                    <h3>Find the animal</h3>
+                </div>
+                <p id="animal-challenge-text" class="random-challenge-text">Listen and pick the animal that says moo</p>
+                <div id="animal-challenge-grid" class="animal-challenge-grid"></div>
+            </article>
+
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Shapes</span>
+                    <h3>Shape names</h3>
+                </div>
+                <div class="shape-quiz">
+                    <button class="shape-bubble" type="button">🔵 Circle</button>
+                    <button class="shape-bubble" type="button">🟩 Square</button>
+                    <button class="shape-bubble" type="button">⭐ Star</button>
+                    <button class="shape-bubble" type="button">🔶 Triangle</button>
+                </div>
+            </article>
+
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Letters</span>
+                    <h3>Alphabet fun</h3>
+                </div>
+                <div class="alphabet-grid">
+                    <button class="alphabet-card" type="button">A</button>
+                    <button class="alphabet-card" type="button">B</button>
+                    <button class="alphabet-card" type="button">C</button>
+                    <button class="alphabet-card" type="button">D</button>
+                    <button class="alphabet-card" type="button">E</button>
+                    <button class="alphabet-card" type="button">F</button>
+                </div>
+            </article>
+
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Colors</span>
+                    <h3>Color names</h3>
+                </div>
+                <div class="color-names">
+                    <button class="color-pill pink" type="button">Pink</button>
+                    <button class="color-pill blue" type="button">Blue</button>
+                    <button class="color-pill green" type="button">Green</button>
+                    <button class="color-pill yellow" type="button">Yellow</button>
+                    <button class="color-pill purple" type="button">Purple</button>
+                    <button class="color-pill orange" type="button">Orange</button>
+                </div>
+                <p class="mini-help">Tap a color and hear its name clearly.</p>
+            </article>
+
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Story</span>
+                    <h3>Mini story time</h3>
+                </div>
+                <p class="story-text">A little bunny sees a sunny sky. It jumps to the flower garden, says hello to the duck, and smiles at the happy rainbow.</p>
+                <button class="secondary story-button" type="button">Read aloud</button>
+            </article>
+
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Play</span>
+                    <h3>Random challenge</h3>
+                </div>
+                <div class="mini-game-header">
+                    <span id="challenge-timer">30s</span>
+                    <span id="challenge-score">Score: 0</span>
+                </div>
+                <p id="random-challenge-text" class="random-challenge-text">Tap the red ball</p>
+                <p class="mini-help">Find the matching color and object before time ends.</p>
+                <div id="random-challenge-grid" class="random-challenge-grid"></div>
+            </article>
+
+            <article class="preschool-card">
+                <div class="card-header">
+                    <span class="badge">Toys</span>
+                    <h3>Cars & Balls</h3>
+                </div>
+                <p class="mini-help">Listen to each toy and learn its name.</p>
+                <div id="toy-game-grid" class="toy-game-grid"></div>
+            </article>
+
+            <article class="preschool-card game-stage-card">
+                <div class="card-header">
+                    <span class="badge">Action</span>
+                    <h3>Mini race play</h3>
+                </div>
+                <p class="mini-help">Watch the car or ball race to the finish line.</p>
+                <div class="race-track">
+                    <div class="race-player car" id="race-car">🚗</div>
+                    <div class="race-player ball" id="race-ball">⚽</div>
+                    <div class="finish-line"></div>
+                </div>
+                <button id="race-button" class="secondary story-button" type="button">Start race</button>
+            </article>
+        </div>
+    </div>
+
+    <footer class="site-footer">Designed and Developed by Venkata Gangadhar K | © 2026</footer>
+
+    <script src="app.js"></script>
+    <script>
+        const paletteButtons = document.querySelectorAll('.color-swatch');
+        const coloringShapes = document.querySelectorAll('.coloring-shape');
+        const resetButton = document.querySelector('.reset-button');
+        const memoryGame = document.getElementById('memory-game');
+        const musicToggle = document.getElementById('music-toggle');
+        const randomChallengeText = document.getElementById('random-challenge-text');
+        const randomChallengeGrid = document.getElementById('random-challenge-grid');
+        const toyGameGrid = document.getElementById('toy-game-grid');
+        const challengeTimer = document.getElementById('challenge-timer');
+        const challengeScore = document.getElementById('challenge-score');
+        const raceButton = document.getElementById('race-button');
+        const raceCar = document.getElementById('race-car');
+        const raceBall = document.getElementById('race-ball');
+        const animalCards = document.getElementById('animal-cards');
+        const animalChallengeText = document.getElementById('animal-challenge-text');
+        const animalChallengeGrid = document.getElementById('animal-challenge-grid');
+
+        let selectedColor = '#f9a8d4';
+        let audioContext = null;
+        let musicTimer = null;
+        let challengeSeconds = 30;
+        let score = 0;
+        let challengeInterval = null;
+        let raceInterval = null;
+
+        function updateScore() {
+            if (challengeScore) {
+                challengeScore.textContent = `Score: ${score}`;
+            }
+        }
+
+        function startChallengeTimer() {
+            if (challengeInterval) clearInterval(challengeInterval);
+            challengeSeconds = 30;
+            if (challengeTimer) challengeTimer.textContent = `${challengeSeconds}s`;
+            challengeInterval = setInterval(() => {
+                challengeSeconds -= 1;
+                if (challengeTimer) challengeTimer.textContent = `${Math.max(challengeSeconds, 0)}s`;
+                if (challengeSeconds <= 0) {
+                    clearInterval(challengeInterval);
+                    challengeInterval = null;
+                    speakText(`Time up! Final score is ${score}`);
+                    renderRandomChallenge();
+                }
+            }, 1000);
+        }
+
+        function speakText(text, rate = 0.9, pitch = 1.2) {
+            if (!('speechSynthesis' in window)) return;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = rate;
+            utterance.pitch = pitch;
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(utterance);
+        }
+
+        const animalLibrary = [
+            { animal: 'cow', sound: 'moo', emoji: '🐄' },
+            { animal: 'dog', sound: 'bow wow', emoji: '🐶' },
+            { animal: 'cat', sound: 'meow', emoji: '🐱' },
+            { animal: 'duck', sound: 'quack', emoji: '🦆' },
+            { animal: 'lion', sound: 'roar', emoji: '🦁' },
+            { animal: 'sheep', sound: 'baa', emoji: '🐑' },
+            { animal: 'horse', sound: 'neigh', emoji: '🐎' },
+            { animal: 'frog', sound: 'croak', emoji: '🐸' },
+            { animal: 'elephant', sound: 'trumpet', emoji: '🐘' },
+            { animal: 'monkey', sound: 'ooh ooh', emoji: '🐵' },
+            { animal: 'owl', sound: 'hoot', emoji: '🦉' },
+            { animal: 'bird', sound: 'tweet', emoji: '🐦' }
+        ];
+
+        function shuffleArray(list) {
+            return [...list].sort(() => Math.random() - 0.5);
+        }
+
+        function renderAnimalCards() {
+            if (!animalCards) return;
+            const animals = shuffleArray(animalLibrary).slice(0, 10);
+            animalCards.innerHTML = animals.map(({ animal, emoji, sound }) => `
+                <button class="animal-card" data-animal="${animal}" data-sound="${sound}" type="button">${emoji} ${capitalize(animal)}</button>
+            `).join('');
+
+            animalCards.querySelectorAll('.animal-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const animal = card.dataset.animal || 'animal';
+                    const sound = card.dataset.sound || 'hello';
+                    playAnimalSound(animal);
+                    speakText(`${animal} says ${sound}`);
+                    card.classList.add('pulse');
+                    setTimeout(() => card.classList.remove('pulse'), 300);
+                });
+            });
+        }
+
+        function capitalize(text) {
+            return text.charAt(0).toUpperCase() + text.slice(1);
+        }
+
+        function renderAnimalChallenge() {
+            if (!animalChallengeGrid || !animalChallengeText) return;
+            const animals = shuffleArray(animalLibrary).slice(0, 6);
+            const target = animals[Math.floor(Math.random() * animals.length)];
+            animalChallengeText.textContent = `Listen and pick the animal that says ${target.sound}`;
+            animalChallengeGrid.innerHTML = animals.map(({ animal, emoji, sound }) => `
+                <button class="animal-card challenge-animal" data-animal="${animal}" data-sound="${sound}" type="button">${emoji} ${capitalize(animal)}</button>
+            `).join('');
+
+            animalChallengeGrid.querySelectorAll('.challenge-animal').forEach(button => {
+                button.addEventListener('click', () => {
+                    const isCorrect = button.dataset.animal === target.animal;
+                    const chosen = button.dataset.animal || 'animal';
+                    playAnimalSound(chosen);
+                    speakText(isCorrect ? `Correct! It is ${target.animal}` : `Try again. Look for ${target.animal}`);
+                    if (isCorrect) {
+                        button.classList.add('correct-flash');
+                        setTimeout(() => {
+                            renderAnimalChallenge();
+                            renderAnimalCards();
+                        }, 800);
+                    }
+                });
+            });
+        }
+
+        function playAnimalSound(key) {
+            const tones = {
+                cow: [110, 98],
+                dog: [220, 196],
+                cat: [330, 294],
+                duck: [440, 392],
+                lion: [174, 146],
+                sheep: [196, 164],
+                horse: [200, 170],
+                frog: [260, 220],
+                elephant: [120, 112],
+                monkey: [315, 285],
+                owl: [430, 390],
+                bird: [520, 480]
+            };
+
+            const AudioCtor = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtor) return;
+
+            if (!audioContext) audioContext = new AudioCtor();
+            const frequencies = tones[key] || [220, 196];
+            frequencies.forEach((freq, index) => {
+                const oscillator = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                oscillator.type = index === 0 ? 'sine' : 'triangle';
+                oscillator.frequency.value = freq;
+                gain.gain.value = 0.04;
+                oscillator.connect(gain);
+                gain.connect(audioContext.destination);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.24 + index * 0.1);
+            });
+        }
+
+        paletteButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                selectedColor = button.dataset.color || '#f9a8d4';
+                const colorName = button.getAttribute('aria-label') || 'pink';
+                speakText(`${colorName} color`);
+                paletteButtons.forEach(item => item.classList.toggle('active', item === button));
+            });
+        });
+
+        coloringShapes.forEach(shape => {
+            shape.addEventListener('click', () => {
+                shape.style.background = selectedColor;
+                shape.setAttribute('data-color', selectedColor);
+                const colorName = Object.keys({
+                    '#f9a8d4': 'pink',
+                    '#93c5fd': 'blue',
+                    '#86efac': 'green',
+                    '#fcd34d': 'yellow',
+                    '#c4b5fd': 'purple'
+                }).find(key => key === selectedColor) || 'color';
+                speakText(`${colorName} color`);
+            });
+        });
+
+        resetButton?.addEventListener('click', () => {
+            coloringShapes.forEach(shape => {
+                shape.style.background = 'rgba(255,255,255,0.9)';
+                shape.setAttribute('data-color', '');
+            });
+            speakText('Reset colors');
+        });
+
+        const memoryItems = [
+            { emoji: '🐶', name: 'dog' },
+            { emoji: '🐱', name: 'cat' },
+            { emoji: '🐼', name: 'panda' },
+            { emoji: '🦊', name: 'fox' },
+            { emoji: '🐸', name: 'frog' },
+            { emoji: '🐰', name: 'rabbit' }
+        ];
+
+        const memoryCards = [...memoryItems, ...memoryItems]
+            .map((item, index) => ({ ...item, id: `${item.name}-${index}` }))
+            .sort(() => Math.random() - 0.5);
+
+        let flipped = [];
+        let lockBoard = false;
+
+        function renderMemoryBoard() {
+            if (!memoryGame) return;
+            memoryGame.innerHTML = memoryCards.map((card) => `
+                <button class="memory-card" data-name="${card.name}" data-id="${card.id}" type="button">
+                    <span class="card-face">?</span>
+                </button>
+            `).join('');
+
+            memoryGame.querySelectorAll('.memory-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    if (lockBoard || card.classList.contains('matched') || card.classList.contains('revealed')) return;
+
+                    card.classList.add('revealed');
+                    card.querySelector('.card-face').textContent = card.dataset.emoji || '';
+                    flipped.push(card);
+
+                    if (flipped.length === 2) {
+                        const [first, second] = flipped;
+                        const isMatch = first.dataset.name === second.dataset.name;
+                        lockBoard = true;
+
+                        setTimeout(() => {
+                            if (isMatch) {
+                                first.classList.add('matched');
+                                second.classList.add('matched');
+                                first.setAttribute('aria-label', 'Matched card');
+                                second.setAttribute('aria-label', 'Matched card');
+                                speakText('Great match!');
+                            } else {
+                                first.classList.remove('revealed');
+                                second.classList.remove('revealed');
+                                first.querySelector('.card-face').textContent = '?';
+                                second.querySelector('.card-face').textContent = '?';
+                            }
+                            flipped = [];
+                            lockBoard = false;
+                        }, 500);
+                    }
+                });
+            });
+        }
+
+        function createMemoryCards() {
+            memoryGame.innerHTML = '';
+            memoryCards.forEach((card) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'memory-card';
+                button.dataset.name = card.name;
+                button.dataset.id = card.id;
+                button.dataset.emoji = card.emoji;
+                button.innerHTML = '<span class="card-face">?</span>';
+                button.addEventListener('click', () => {
+                    if (lockBoard || button.classList.contains('matched') || button.classList.contains('revealed')) return;
+                    button.classList.add('revealed');
+                    button.querySelector('.card-face').textContent = card.emoji;
+                    flipped.push(button);
+
+                    if (flipped.length === 2) {
+                        const [first, second] = flipped;
+                        const isMatch = first.dataset.name === second.dataset.name;
+                        lockBoard = true;
+                        setTimeout(() => {
+                            if (isMatch) {
+                                first.classList.add('matched');
+                                second.classList.add('matched');
+                            } else {
+                                first.classList.remove('revealed');
+                                second.classList.remove('revealed');
+                                first.querySelector('.card-face').textContent = '?';
+                                second.querySelector('.card-face').textContent = '?';
+                            }
+                            flipped = [];
+                            lockBoard = false;
+                        }, 500);
+                    }
+                });
+                memoryGame.appendChild(button);
+            });
+        }
+
+        function initMemoryGame() {
+            const cards = [...memoryItems, ...memoryItems]
+                .map((item, index) => ({ ...item, id: `${item.name}-${index}` }))
+                .sort(() => Math.random() - 0.5);
+
+            if (!memoryGame) return;
+            memoryGame.innerHTML = cards.map((card) => `
+                <button class="memory-card" data-name="${card.name}" data-id="${card.id}" data-emoji="${card.emoji}" type="button">
+                    <span class="card-face">?</span>
+                </button>
+            `).join('');
+
+            memoryGame.querySelectorAll('.memory-card').forEach((card) => {
+                card.addEventListener('click', () => {
+                    if (lockBoard || card.classList.contains('matched') || card.classList.contains('revealed')) return;
+                    card.classList.add('revealed');
+                    card.querySelector('.card-face').textContent = card.dataset.emoji;
+                    flipped.push(card);
+
+                    if (flipped.length === 2) {
+                        const [first, second] = flipped;
+                        const isMatch = first.dataset.name === second.dataset.name;
+                        lockBoard = true;
+                        setTimeout(() => {
+                            if (isMatch) {
+                                first.classList.add('matched');
+                                second.classList.add('matched');
+                            } else {
+                                first.classList.remove('revealed');
+                                second.classList.remove('revealed');
+                                first.querySelector('.card-face').textContent = '?';
+                                second.querySelector('.card-face').textContent = '?';
+                            }
+                            flipped = [];
+                            lockBoard = false;
+                        }, 500);
+                    }
+                });
+            });
+        }
+
+        initMemoryGame();
+
+        renderAnimalCards();
+
+        document.querySelectorAll('.shape-bubble, .alphabet-card').forEach(item => {
+            item.addEventListener('click', () => {
+                const label = item.textContent.trim();
+                speakText(label);
+            });
+        });
+
+        const storyPool = [
+            'A little rabbit hops over the bright green grass and waves to the morning sun.',
+            'A tiny duck paddles in the pond and laughs with a happy yellow duckling.',
+            'A smiling bear finds a red balloon and dances under the rainbow.',
+            'The puppy runs across the garden and chases a bouncing blue ball.',
+            'A cheerful kitten climbs a soft purple cushion and curls up for a nap.'
+        ];
+
+        document.querySelector('.story-button')?.addEventListener('click', () => {
+            const story = storyPool[Math.floor(Math.random() * storyPool.length)];
+            const storyText = document.querySelector('.story-text');
+            if (storyText) storyText.textContent = story;
+            speakText(story, 0.8, 1.2);
+        });
+
+        const challengePool = [
+            { emoji: '⚽', type: 'ball', color: 'red' },
+            { emoji: '🎈', type: 'balloon', color: 'yellow' },
+            { emoji: '🚗', type: 'car', color: 'blue' },
+            { emoji: '🛴', type: 'scooter', color: 'green' },
+            { emoji: '⭐', type: 'star', color: 'pink' },
+            { emoji: '🧸', type: 'teddy', color: 'purple' },
+            { emoji: '🚚', type: 'truck', color: 'orange' },
+            { emoji: '🌈', type: 'rainbow', color: 'rainbow' },
+            { emoji: '🎲', type: 'dice', color: 'green' },
+            { emoji: '🧁', type: 'cake', color: 'pink' }
+        ];
+
+        function renderRandomChallenge() {
+            if (!randomChallengeGrid || !randomChallengeText) return;
+            const shuffled = shuffleArray(challengePool).slice(0, 6);
+            const answer = shuffled[Math.floor(Math.random() * shuffled.length)];
+            randomChallengeText.textContent = `Tap the ${answer.color} ${answer.type}`;
+            randomChallengeGrid.innerHTML = shuffled.map(item => `
+                <button class="random-item ${item.color}" type="button" data-type="${item.type}" data-color="${item.color}">
+                    <span>${item.emoji}</span>
+                    <small>${item.color}</small>
+                </button>
+            `).join('');
+
+            randomChallengeGrid.querySelectorAll('button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const isMatch = button.dataset.type === answer.type && button.dataset.color === answer.color;
+                    const label = `${button.dataset.color} ${button.dataset.type}`;
+                    speakText(isMatch ? `Great! ${label}` : `Try again. This is ${label}`);
+                    if (isMatch) {
+                        score += 1;
+                        updateScore();
+                        button.classList.add('correct-flash');
+                        setTimeout(() => {
+                            renderRandomChallenge();
+                            renderToyGame();
+                        }, 700);
+                    }
+                });
+            });
+        }
+
+        function renderToyGame() {
+            if (!toyGameGrid) return;
+            const toys = shuffleArray([
+                { emoji: '🚗', label: 'red car' },
+                { emoji: '⚽', label: 'blue ball' },
+                { emoji: '🛴', label: 'green scooter' },
+                { emoji: '🎈', label: 'yellow balloon' },
+                { emoji: '🧩', label: 'purple block' },
+                { emoji: '🚲', label: 'pink bike' },
+                { emoji: '🧸', label: 'orange teddy' },
+                { emoji: '🪁', label: 'sky kite' }
+            ]).slice(0, 6);
+
+            toyGameGrid.innerHTML = toys.map(toy => `
+                <button class="toy-card" type="button" data-label="${toy.label}">
+                    <span>${toy.emoji}</span>
+                    <small>${toy.label}</small>
+                </button>
+            `).join('');
+
+            toyGameGrid.querySelectorAll('button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const label = button.dataset.label || 'toy';
+                    speakText(label);
+                    button.classList.add('pulse');
+                    setTimeout(() => button.classList.remove('pulse'), 250);
+                });
+            });
+        }
+
+        renderRandomChallenge();
+        renderToyGame();
+        renderAnimalChallenge();
+        updateScore();
+        startChallengeTimer();
+
+        document.querySelectorAll('.color-pill').forEach(item => {
+            item.addEventListener('click', () => {
+                const label = item.textContent.trim();
+                speakText(`${label} color`);
+                item.classList.add('pulse');
+                setTimeout(() => item.classList.remove('pulse'), 250);
+            });
+        });
+
+        if (raceButton && raceCar && raceBall) {
+            raceButton.addEventListener('click', () => {
+                if (raceInterval) {
+                    clearInterval(raceInterval);
+                    raceInterval = null;
+                    raceButton.textContent = 'Start race';
+                    return;
+                }
+
+                raceButton.textContent = 'Stop race';
+                const carStart = { left: 18 };
+                const ballStart = { left: 18 };
+                const raceLength = 72;
+
+                raceCar.style.left = `${carStart.left}%`;
+                raceBall.style.left = `${ballStart.left}%`;
+
+                raceInterval = setInterval(() => {
+                    const carLeft = Number.parseInt(raceCar.style.left || '18', 10);
+                    const ballLeft = Number.parseInt(raceBall.style.left || '18', 10);
+                    const nextCar = Math.min(carLeft + 4, raceLength);
+                    const nextBall = Math.min(ballLeft + 3, raceLength);
+                    raceCar.style.left = `${nextCar}%`;
+                    raceBall.style.left = `${nextBall}%`;
+
+                    if (nextCar >= raceLength || nextBall >= raceLength) {
+                        clearInterval(raceInterval);
+                        raceInterval = null;
+                        raceButton.textContent = 'Start race';
+                        const winner = nextCar >= raceLength ? 'Car wins!' : 'Ball wins!';
+                        speakText(winner);
+                    }
+                }, 260);
+            });
+        }
+
+        function startMusic() {
+            const AudioCtor = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtor) return;
+
+            if (!audioContext) {
+                audioContext = new AudioCtor();
+            }
+
+            const melody = [261.63, 329.63, 392.0, 329.63, 293.66, 349.23, 392.0];
+            let index = 0;
+            if (musicTimer) clearInterval(musicTimer);
+            musicTimer = setInterval(() => {
+                if (!audioContext) return;
+                const oscillator = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                oscillator.type = 'sine';
+                oscillator.frequency.value = melody[index % melody.length];
+                gain.gain.value = 0.02;
+                oscillator.connect(gain);
+                gain.connect(audioContext.destination);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.28);
+                index += 1;
+            }, 420);
+
+            musicToggle.textContent = 'Music: On';
+        }
+
+        function stopMusic() {
+            if (musicTimer) {
+                clearInterval(musicTimer);
+                musicTimer = null;
+            }
+            musicToggle.textContent = 'Music: Off';
+        }
+
+        musicToggle?.addEventListener('click', () => {
+            if (musicTimer) {
+                stopMusic();
+            } else {
+                startMusic();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -16,6 +16,8 @@ public class QuestionService {
     public List<SubjectInfo> getSubjects() {
         return List.of(
                 new SubjectInfo("eamcet", "EAMCET Mock", "Intermediate MPC / Bi.P.C", "Entrance-focused mixed aptitude practice for Engineering and Pharmacy aspirants."),
+                new SubjectInfo("eamcet-mpc", "EAMCET - MPC Mock", "Intermediate MPC", "Mock exam with 20 questions each from Mathematics, Physics and Chemistry (60 questions total)."),
+                new SubjectInfo("eamcet-bpc", "EAMCET - Bi.P.C Mock", "Intermediate Bi.P.C", "Mock exam with 20 questions each from Biology, Physics and Chemistry (60 questions total)."),
                 new SubjectInfo("java", "Java", "Technical", "Core Java programming concepts, OOP, collections, JVM and coding fundamentals."),
                 new SubjectInfo("math", "Mathematics", "Grades 6-8", "Algebra, fractions, percentages and practical problem solving."),
                 new SubjectInfo("science", "Science", "Grades 6-8", "Life, Earth and physical science concepts with experiments and observation."),
@@ -40,6 +42,8 @@ public class QuestionService {
             case "chemistry" -> chemistryQuestions();
             case "biology" -> biologyQuestions();
             case "eamcet" -> combinedEamcetMockBank();
+            case "eamcet-mpc" -> combinedEamcetMpcBank(grade);
+            case "eamcet-bpc" -> combinedEamcetBpcBank(grade);
             case "java" -> javaQuestions();
             case "java-coding" -> javaCodingQuestions();
             case "spring-boot" -> springBootQuestions();
@@ -47,7 +51,7 @@ public class QuestionService {
             default -> throw new IllegalArgumentException("Unsupported subject: " + subject);
         });
 
-        int targetCount = "eamcet".equalsIgnoreCase(subject) ? 50 : 25;
+        int targetCount = "eamcet".equalsIgnoreCase(subject) ? 50 : ("eamcet-mpc".equalsIgnoreCase(subject) || "eamcet-bpc".equalsIgnoreCase(subject) ? 60 : 25);
         List<Question> gradeMatches = filterQuestionsByGrade(bank, grade);
         List<Question> selected = new ArrayList<>(gradeMatches);
 
@@ -77,6 +81,37 @@ public class QuestionService {
         bank.addAll(biologyQuestions());
         bank.addAll(eamcetQuestions());
         return bank;
+    }
+
+    // Build an EAMCET mock for MPC: 20 questions each from intermediate-math, physics and chemistry
+    private List<Question> combinedEamcetMpcBank(String grade) {
+        List<Question> combined = new ArrayList<>();
+        combined.addAll(pickPerSubject(intermediateMathQuestions(), grade, 20));
+        combined.addAll(pickPerSubject(physicsQuestions(), grade, 20));
+        combined.addAll(pickPerSubject(chemistryQuestions(), grade, 20));
+        return combined;
+    }
+
+    // Build an EAMCET mock for Bi.P.C: 20 questions each from biology, physics and chemistry
+    private List<Question> combinedEamcetBpcBank(String grade) {
+        List<Question> combined = new ArrayList<>();
+        combined.addAll(pickPerSubject(biologyQuestions(), grade, 20));
+        combined.addAll(pickPerSubject(physicsQuestions(), grade, 20));
+        combined.addAll(pickPerSubject(chemistryQuestions(), grade, 20));
+        return combined;
+    }
+
+    private List<Question> pickPerSubject(List<Question> bank, String grade, int perSubject) {
+        // Preserve original order: select grade-matching questions in their original bank order.
+        List<Question> gradeMatches = filterQuestionsByGrade(bank, grade);
+        List<Question> selected = new ArrayList<>(gradeMatches);
+        if (selected.size() < perSubject) {
+            List<Question> remaining = new ArrayList<>(bank);
+            remaining.removeAll(selected);
+            int needed = perSubject - selected.size();
+            selected.addAll(remaining.subList(0, Math.min(needed, remaining.size())));
+        }
+        return selected.stream().limit(perSubject).collect(Collectors.toList());
     }
 
     private List<Question> filterQuestionsByGrade(List<Question> bank, String grade) {

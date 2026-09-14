@@ -30,8 +30,8 @@ const pageMode = document.body.dataset.page || 'general';
 const TECHNICAL_SUBJECTS = ['java', 'java-coding', 'spring-boot', 'microservices'];
 const GENERAL_SUBJECTS = ['math', 'science', 'gk'];
 const INTERMEDIATE_STREAMS = {
-    mpc: ['intermediate-math', 'physics', 'chemistry', 'eamcet'],
-    bpc: ['biology', 'physics', 'chemistry', 'eamcet']
+    mpc: ['eamcet-mpc','intermediate-math', 'physics', 'chemistry'],
+    bpc: ['eamcet-bpc','biology', 'physics', 'chemistry']
 };
 
 const state = {
@@ -95,6 +95,13 @@ function getVisibleSubjects() {
             : pageMode === 'intermediate'
                 ? INTERMEDIATE_STREAMS[state.intermediateStream] || INTERMEDIATE_STREAMS.mpc
                 : GENERAL_SUBJECTS;
+
+    // For intermediate streams we should preserve the order defined in INTERMEDIATE_STREAMS
+    if (pageMode === 'intermediate') {
+        return allowed.map(slug => state.subjects.find(s => s.slug === slug)).filter(Boolean);
+    }
+
+    // For other modes keep the subjects in the order they appear in the fetched subject list
     return state.subjects.filter(subject => allowed.includes(subject.slug));
 }
 
@@ -165,7 +172,7 @@ function renderDashboard() {
     if (!dashboard) return;
 
     dashboard.innerHTML = visibleSubjects.map(subject => {
-        const questionCount = subject.slug === 'eamcet' ? 50 : state.selectedCount;
+        const questionCount = subject.slug === 'eamcet' ? 50 : (subject.slug === 'eamcet-mpc' || subject.slug === 'eamcet-bpc' ? 60 : state.selectedCount);
         return `
             <button class="subject-card ${subject.slug}" data-subject="${subject.slug}">
                 <div>
@@ -263,8 +270,22 @@ async function startQuiz(subjectSlug) {
     const gradeParam = (pageMode === 'intermediate' || pageMode === 'java-lab') ? '9-10' : state.selectedGrade;
     const response = await fetch(`/api/questions/${subjectSlug}?grade=${encodeURIComponent(gradeParam)}`);
     const questions = await response.json();
-    let filteredQuestions = shuffleArray(questions);
-    const questionLimit = subjectSlug === 'eamcet' ? 50 : state.selectedCount;
+    let filteredQuestions;
+    const questionLimit = subjectSlug === 'eamcet' ? 50 : (subjectSlug === 'eamcet-mpc' || subjectSlug === 'eamcet-bpc' ? 60 : state.selectedCount);
+
+    // For eamcet-mpc / eamcet-bpc keep subject blocks in order (20 questions each) but randomize within each subject
+    if (subjectSlug === 'eamcet-mpc' || subjectSlug === 'eamcet-bpc') {
+        const perSubject = 20;
+        filteredQuestions = [];
+        for (let i = 0; i < 3; i++) {
+            const start = i * perSubject;
+            const chunk = questions.slice(start, start + perSubject);
+            // Preserve subject block order and question order as returned by the server (no shuffling)
+            filteredQuestions = filteredQuestions.concat(chunk);
+        }
+    } else {
+        filteredQuestions = shuffleArray(questions);
+    }
 
     if (subjectSlug === 'java-coding') {
         const difficultyMap = {
