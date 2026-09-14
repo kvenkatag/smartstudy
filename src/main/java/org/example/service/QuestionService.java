@@ -15,6 +15,8 @@ public class QuestionService {
 
     public List<SubjectInfo> getSubjects() {
         return List.of(
+                new SubjectInfo("eamcet", "EAMCET Mock", "Intermediate MPC / Bi.P.C", "Entrance-focused mixed aptitude practice for Engineering and Pharmacy aspirants."),
+                new SubjectInfo("java", "Java", "Technical", "Core Java programming concepts, OOP, collections, JVM and coding fundamentals."),
                 new SubjectInfo("math", "Mathematics", "Grades 6-8", "Algebra, fractions, percentages and practical problem solving."),
                 new SubjectInfo("science", "Science", "Grades 6-8", "Life, Earth and physical science concepts with experiments and observation."),
                 new SubjectInfo("gk", "General Knowledge", "Grades 6-8", "World facts, history, geography, and current awareness for curious minds."),
@@ -22,8 +24,6 @@ public class QuestionService {
                 new SubjectInfo("physics", "Physics", "Intermediate MPC", "Mechanics, optics, electricity, and modern physics practice for competitive exams."),
                 new SubjectInfo("chemistry", "Chemistry", "Intermediate MPC", "Atomic structure, bonding, thermo chemistry, and organic chemistry essentials."),
                 new SubjectInfo("biology", "Biology", "Intermediate Bi.P.C", "Human biology, genetics, reproduction, plant sciences and life processes for Bi.P.C aspirants."),
-                new SubjectInfo("eamcet", "EAMCET Mock", "Intermediate MPC / Bi.P.C", "Entrance-focused mixed aptitude practice for Engineering and Pharmacy aspirants."),
-                new SubjectInfo("java", "Java", "Technical", "Core Java programming concepts, OOP, collections, JVM and coding fundamentals."),
                 new SubjectInfo("java-coding", "Java Coding", "Technical", "Debug Java snippets, identify errors, and choose the correct replacement code lines."),
                 new SubjectInfo("spring-boot", "Spring Boot", "Technical", "Spring Boot setup, annotations, dependency injection, REST APIs and application configuration."),
                 new SubjectInfo("microservices", "Microservices", "Technical", "Service design, API gateways, resilience, inter-service communication and system patterns.")
