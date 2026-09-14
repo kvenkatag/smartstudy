@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartStudyApp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="general">
+    <div class="app-shell">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">School Learning</p>
+                <h1><a href="/" class="home-link">Smart Study Practice</a></h1>
+            </div>
+            <div class="topbar-actions">
+                <a href="technical.html" class="link-button secondary">Java Practice</a>
+                <a href="intermediate.html" class="link-button secondary">EAMCET</a>
+                <button id="back-to-dashboard" class="secondary hidden">Back to Dashboard</button>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <label for="question-count">Question range</label>
+            <select id="question-count">
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25" selected>25</option>
+            </select>
+
+            <label for="grade-select" style="margin-left:16px;">Student grade</label>
+            <select id="grade-select">
+                <option value="1-2">Grades 1-2</option>
+                <option value="3-4">Grades 3-4</option>
+                <option value="5-6">Grades 5-6</option>
+                <option value="7-8" selected>Grades 7-8</option>
+                <option value="9-10">Grades 9-10</option>
+            </select>
+        </div>
+
+        <section id="dashboard" class="dashboard"></section>
+        <section id="history-panel" class="history-panel"></section>
+
+        <section id="test-panel" class="test-panel hidden">
+            <div class="test-header">
+                <div>
+                    <p id="test-subject" class="eyebrow">Practice Test</p>
+                    <h2 id="test-title">Subject Test</h2>
+                </div>
+                <div class="progress-wrap">
+                    <span id="progress-label">Question 1 of 20</span>
+                    <div class="progress-bar">
+                        <span id="progress-fill"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="question-card" class="question-card"></div>
+
+            <div class="nav-buttons">
+                <button id="test-back-button" class="secondary hidden">Back to Subject List</button>
+                <button id="prev-button" class="secondary">Previous</button>
+                <button id="next-button" class="primary">Next</button>
+                <button id="submit-button" class="success hidden">Submit Test</button>
+            </div>
+        </section>
+
+        <section id="results-panel" class="results-panel hidden">
+            <div class="results-summary">
+                <div>
+                    <p class="eyebrow">Assessment Result</p>
+                    <h2 id="result-heading">Great effort!</h2>
+                </div>
+                <div class="score-badge">
+                    <span id="score-value">0/20</span>
+                    <small id="score-percent">0%</small>
+                </div>
+            </div>
+
+            <div id="result-insight" class="insight-box"></div>
+            <div id="results-list" class="results-list"></div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+    <footer class="site-footer">Designed and Developed by Venkata Gangadhar K | © 2026</footer>
+</body>
+</html>
